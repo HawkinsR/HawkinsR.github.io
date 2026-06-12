@@ -1,0 +1,57 @@
+services:
+  grazioso-db:
+    image: postgres:17-alpine
+    container_name: grazioso-db
+    environment:
+      POSTGRES_DB: grazioso_db
+      POSTGRES_USER: grazioso_user
+      POSTGRES_PASSWORD: grazioso_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U grazioso_user -d grazioso_db" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  grazioso-api:
+    image: gs-api:latest
+    build:
+      context: ./GraziosoSalvare-API
+      dockerfile: Dockerfile
+    container_name: grazioso-api
+    ports:
+      - "8080:8080"
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=grazioso-db;Port=5432;Database=grazioso_db;Username=grazioso_user;Password=grazioso_password
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      grazioso-db:
+        condition: service_healthy
+    volumes:
+      - ./aac_shelter_outcomes.csv:/app/aac_shelter_outcomes.csv:ro
+
+  grazioso-ui:
+    image: gs-ui:latest
+    build:
+      context: ./GraziosoSalvare-UI
+      dockerfile: Dockerfile
+    container_name: grazioso-ui
+    depends_on:
+      - grazioso-api
+
+  grazioso-proxy:
+    image: nginx:stable-alpine
+    container_name: grazioso-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx-proxy.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - grazioso-ui
+      - grazioso-api
+
+volumes:
+  postgres_data:
