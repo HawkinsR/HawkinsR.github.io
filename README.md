@@ -11,6 +11,11 @@ The goal of this enhancement is to port the local Python script into a productio
 
 ---
 
+## Code Review
+### [Watch the video code review here](https://youtu.be/Bdr496AjpVI)
+
+---
+
 ## Architectural Highlights & Code Snippets
 
 ### 1. Architecture & Infrastructure
