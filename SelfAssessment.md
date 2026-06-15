@@ -26,10 +26,10 @@ Security and reliability are built into my projects from day one. I implement se
 
 ## Portfolio Projects & Architecture Showcases
 
-The artifacts highlighted below demonstrate my progression from developing basic scripts to engineering comprehensive web applications. The central piece of this portfolio is the Grazioso Salvare rescue dashboard—an application I modernized from a local Python script into a fully distributed, containerized stack. The following resources include all code, documentation, and reviews for this modernization project.
+The artifacts highlighted below demonstrate my progression from developing basic scripts to engineering comprehensive web applications. The central piece of this portfolio is the Grazioso Salvare rescue dashboard an application I modernized from a local Python script into a fully distributed, containerized stack. The following resources include all code, documentation, and reviews for this modernization project.
 
 ### Technical Code Artifacts
-- [**Original Code Artifact**](https://github.com/HawkinsR/HawkinsR.github.io/tree/main/Hawkins-7-2): The original Python and JupyterDash project prior to enhancement, demonstrating early skills in script-based data interaction with MongoDB.
+- [**Original Code Artifact**](https://github.com/HawkinsR/HawkinsR.github.io/tree/main/Hawkins-7-2): The original Python and JupyterDash project prior to enhancement, demonstrating proof of concept in Python-scripted dashboard with MongoDB.
 - [**Enhanced Code Artifact**](https://github.com/HawkinsR/HawkinsR.github.io/tree/main/Hawkins-Updates): The updated, production-grade web application featuring a React UI, C# .NET Web API, PostgreSQL database, and Docker containerization.
 - [**Technical Architecture Overview (README)**](README.md)
 
